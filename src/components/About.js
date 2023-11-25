@@ -1,9 +1,12 @@
 // About.js
 import React from 'react';
+import NavBar from './NavBar';
 
 const About = () => {
   return (
     <div>
+              <NavBar />
+
       <h2>About Us</h2>
       <p>
         Welcome to [Your Company Name], where we bring innovative solutions to

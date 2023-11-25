@@ -1,8 +1,12 @@
 import React from 'react'
+import NavBar from './NavBar';
 
 function CustomerForm() {
   return (
-    <div>CustomerForm</div>
+    <div>
+              <NavBar />
+
+    CustomerForm</div>
   )
 }
 

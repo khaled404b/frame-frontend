@@ -1,13 +1,36 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
 
 const NavbarContainer = styled.nav`
   background: #2c3e50;
   padding: 10px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  position: relative;
+  animation: ${fadeIn} 0.5s ease;
+`;
+
+const Logo = styled.h1`
+  margin: 0;
+  color: #ecf0f1;
+  font-size: 24px;
+
+  @media (max-width: 768px) {
+    font-size: 20px;
+  }
 `;
 
 const NavList = styled.ul`
@@ -15,6 +38,7 @@ const NavList = styled.ul`
   margin: 0;
   padding: 0;
   display: flex;
+  align-items: center;
 `;
 
 const NavItem = styled.li`
@@ -34,7 +58,7 @@ const NavItem = styled.li`
     }
   }
 
-  @media (max-width: 600px) {
+  @media (max-width: 768px) {
     margin: 0 10px;
   }
 `;
@@ -53,6 +77,7 @@ const NavLink = styled(Link)`
 const Navbar = () => {
   return (
     <NavbarContainer>
+      <Logo>Your Logo</Logo>
       <NavList>
         <NavItem>
           <NavLink to="/">Home</NavLink>
@@ -68,6 +93,9 @@ const Navbar = () => {
         </NavItem>
         <NavItem>
           <NavLink to="/contact">Contact</NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink to="/CustomerForm">CustomerForm</NavLink>
         </NavItem>
       </NavList>
     </NavbarContainer>

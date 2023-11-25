@@ -1,8 +1,14 @@
 import React from 'react'
+import NavBar from './NavBar';
 
 function Services() {
   return (
-    <div>Services</div>
+    <div>
+              <NavBar />
+
+    Services
+    
+    </div>
   )
 }
 
