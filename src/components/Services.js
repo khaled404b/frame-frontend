@@ -26,8 +26,10 @@ const serviceCardStyle = {
 };
 
 const headingStyle = {
-  color: '#333',
+  color: 'black',
+  'text-align': 'center'
 };
+
 
 const serviceImageStyle = {
   width: '100%',
@@ -36,7 +38,7 @@ const serviceImageStyle = {
 };
 
 const descriptionStyle = {
-  color: '#777',
+  color: '#999',
 };
 
 function Services() {

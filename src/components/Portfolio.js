@@ -1,17 +1,15 @@
+
 import React, { useState } from 'react';
 import NavBar from './NavBar';
-import './Portfolio.css'; // Import a CSS file for styling (create Portfolio.css in the same directory)
-
-function Portfolio() {
-  const [selectedService, setSelectedService] = useState(null);
-
+import './Portfolio.css';
+import bannerImage from './Img/logo192.jpg';
 
   const projects = [
     {
       serviceName: 'Architectural',
       projectName: 'Modern Residence',
       description: 'A contemporary architectural design for a luxurious residence.',
-      image: 'https://via.placeholder.com/400',
+      image: bannerImage,
     },
     {
       serviceName: 'Structural',
@@ -93,10 +91,39 @@ function Portfolio() {
       },
      
   ];
-  const filteredProjects = selectedService
-  ? projects.filter((project) => project.serviceName === selectedService)
-  : projects;
 
+ 
+const ImageModal = ({ project, onClose }) => (
+  <div className="image-modal">
+    <div className="modal-content">
+      <span className="close" onClick={onClose}>
+        &times;
+      </span>
+      <img src={project.image} alt={project.projectName} className="modal-image" />
+    </div>
+  </div>
+);
+
+function Portfolio() {
+  const [selectedService, setSelectedService] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedProject, setSelectedProject] = useState(null);
+
+  const filteredProjects = selectedService
+    ? projects.filter((project) => project.serviceName === selectedService)
+    : projects;
+
+  const handleProjectClick = (project) => {
+    setSelectedProject(project);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedProject(null);
+  };
+
+      
   return (
     <div>
       <NavBar />
@@ -124,7 +151,7 @@ function Portfolio() {
           </div>
           <div className="projects-container">
             {filteredProjects.map((project, index) => (
-              <div key={index} className="project-card">
+              <div key={index} className="project-card" onClick={() => handleProjectClick(project)}>
                 <img src={project.image} alt={project.projectName} className="project-image" />
                 <div className="project-details">
                   <h2 className="project-name">{project.projectName}</h2>
@@ -136,6 +163,7 @@ function Portfolio() {
           </div>
         </div>
       </div>
+      {isModalOpen && <ImageModal project={selectedProject} onClose={closeModal} />}
     </div>
   );
 }

@@ -21,14 +21,14 @@ const Banner = styled.img`
 
 const Heading = styled.h2`
   font-size: 2.5em;
-  color: #333;
+  color: black;
   margin-bottom: 20px;
 `;
 
 const Text = styled.p`
   font-size: 1.3em;
   line-height: 1.6;
-  color: #666;
+  color: black;
   margin-bottom: 7px;
 `;
 
@@ -41,6 +41,8 @@ const TeamSection = styled.div`
 const TeamMember = styled.div`
   flex: 1 1 300px;
   text-align: center;
+  color: black;
+
 `;
 
 const MemberImage = styled.img`
